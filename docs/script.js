@@ -98,12 +98,13 @@ function createModel() {
   const model = tf.sequential(); 
   
   // Add a single hidden layer
-  model.add(tf.layers.dense({inputShape: [1], units: 1, useBias: true}));
+  model.add(tf.layers.dense({inputShape: [1], units: 20, useBias: true}));
+  model.add(tf.layers.dense({units: 20, activation: 'sigmoid'}));
   
   // Add an output layer
   model.add(tf.layers.dense({units: 1, useBias: true}));
   
-  model.add(tf.layers.dense({units: 1, activation: 'sigmoid'}));
+  
   return model;
 }
 
@@ -175,5 +176,3 @@ function testModel(model, inputData, normalizationData) {
 }
 
 document.addEventListener('DOMContentLoaded', run);
-
-
